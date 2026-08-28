@@ -2,30 +2,40 @@
 
 int main() {
     float nota1[30], nota2[30], media[30];
-    float mediaTurma = 0;
+    float somaMedias = 0, mediaTurma;
+    int i;
 
-    for (int i = 0; i < 30; i++) {
-        printf("Digite a primeira nota do aluno %d: ", i + 1);
+    // Entrada das notas e cálculo das médias individuais
+    for (i = 0; i < 30; i++) {
+        printf("\nAluno %d\n", i + 1);
+
+        printf("Digite a primeira nota: ");
         scanf("%f", &nota1[i]);
 
-        printf("Digite a segunda nota do aluno %d: ", i + 1);
+        printf("Digite a segunda nota: ");
         scanf("%f", &nota2[i]);
 
-        media[i] = (nota1[i] * 2 + nota2[i] * 3) / 5;
+        media[i] = (nota1[i] * 2 + nota2[i] * 3) / 5.0;
 
-        mediaTurma += media[i];
+        somaMedias += media[i];
     }
 
-    mediaTurma = mediaTurma / 30;
+    // Cálculo da média da turma
+    mediaTurma = somaMedias / 30.0;
 
+    printf("\n====================================");
     printf("\nMedia da turma: %.2f\n", mediaTurma);
+    printf("====================================\n");
 
+    // Exibição dos alunos acima da média da turma
     printf("\nAlunos acima da media da turma:\n");
 
-    for (int i = 0; i < 30; i++) {
+    for (i = 0; i < 30; i++) {
         if (media[i] > mediaTurma) {
-            printf("Aluno %d - Nota 1: %.2f | Nota 2: %.2f | Media: %.2f\n",
-                   i + 1, nota1[i], nota2[i], media[i]);
+            printf("\nAluno %d", i + 1);
+            printf("\nNota 1: %.2f", nota1[i]);
+            printf("\nNota 2: %.2f", nota2[i]);
+            printf("\nMedia: %.2f\n", media[i]);
         }
     }
 
